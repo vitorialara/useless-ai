@@ -2,3 +2,4 @@ haystack-ai==2.4.0
 streamlit==1.32.0
 datasets>=2.6.1
 sentence-transformers>=3.0.0
+assemblyai==0.33.0
