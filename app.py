@@ -47,9 +47,19 @@ document_store.write_documents(docs_with_embeddings["documents"])
 text_embedder = SentenceTransformersTextEmbedder(model="sentence-transformers/all-MiniLM-L6-v2")
 retriever = InMemoryEmbeddingRetriever(document_store)
 template = """
-Consider the context given in the question, please generate a wild conspiracy theory in two paragraphs that could only occur based on the following news articles of events that occurred in San Francisco in the last year (and at the end of the answer, give me the part of the theory where you used the documents and the title of the documents you used):
+Using the context provided, generate a creative and outlandish conspiracy theory in two paragraphs. 
+Your theory should be based on the following news articles about events in San Francisco from the last year.
+Make sure the theory is wild but still incorporates specific details news articles.
+At the beginning of your answer, provide a catchy title for the theory in 7 or fewer words.
+Bold this title using Markdown.
+Don't use the word "Conspiracy" in your title.
+In addition, center the title and have it on its own unique line.
+Don't have a colon at the end of the title
+At the end of your answer, provide the titles of the articles you used in a bulleted list.
 
-The context for the question are the following news articles of events that occurred in San Francisco in the last year, consider them as highly important to properly answer the question:
+Context:
+Below are the key news articles that occurred in San Francisco over the last year. 
+Use them to inform your answer:
 {% for document in documents %}
     {{ document.content }}
 {% endfor %}
